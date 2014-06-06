@@ -37,17 +37,13 @@
         setInterval(function(){ajaxCheck()}, 30000);
       }
       function ajaxCheck() {
-          alert('checking ajax');
           var html = $('#debug_div').html();
           html += '<hr />';
           html += 'Checking via ajax<br />';
-          alert(html);
           var prev_status = $('#local_storage_div').attr('data-network-status');
           html += 'Prev status: ' + prev_status + '<br />';
-          alert(html);
           var jqxhr = $.get( "http://www.google.com", function() {
             html += 'new_status is online<br />';
-            alert(html);
             var new_status = 'online';
             toggleStatus(prev_status,new_status);
             $('#debug_div').html(html);
@@ -55,7 +51,6 @@
           .fail(function() {
             html += 'new status is offline<br />'
             var new_status = 'offline';
-            alert(html);
             toggleStatus(prev_status,new_status)
             $('#debug_div').html(html);
           });
@@ -71,7 +66,6 @@
               $('#offline_div').removeAttr('style');
             }
         }
-        
       }
     </script>
   </head>
