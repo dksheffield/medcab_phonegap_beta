@@ -43,22 +43,18 @@
       }
       function onOffline() {
         // Handle the offline event
-        window.location.href = 'offline.html';
+        navigator.notification.alert('Looks, like you went offline, please try again when you come back   :(');
       }
       function onOnline() {
         // Handle the offline event
-        navigator.notification.alert(':p Your back online now...');
+        window.location.href = 'index.html';
       }
     </script>
   </head>
 
   <body onload="onBodyLoad()">
 
-    <div id="uuid">
-        Default
-    </div>
-    
-    v05
+    You are currently offline, we will send you back when you are connected again...
 
   </body>
 </html>
