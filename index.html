@@ -37,6 +37,7 @@
         setInterval(function(){ajaxCheck()}, 30000);
       }
       function ajaxCheck() {
+          alert('checking ajax');
           var html = $('#debug_div').html();
           html += 'Checking via ajax<br />';
           var prev_status = $('#local_storage_div').attr('data-network-status');
