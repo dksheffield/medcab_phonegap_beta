@@ -34,7 +34,7 @@
       }
       function onDeviceReady() {
         $('#uuid').html(device.uuid);
-        setInterval(function(){ajaxCheck()}, 60000);
+        setInterval(function(){ajaxCheck()}, 30000);
       }
       function ajaxCheck() {
           var html = $('#debug_div').html();
@@ -82,7 +82,7 @@
         <hr />
         <div id="uuid">Default</div>
         &nbsp;&nbsp;
-        <div id="version">v15</div>
+        <div id="version">v16</div>
         &nbsp;&nbsp;
         <a onclick="alert(navigator.connection.type)">Network Status</a>
         <div id="debug_div"></div>
