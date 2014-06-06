@@ -62,8 +62,11 @@
             if (new_status == 'online') {
               $('#offline_div').removeAttr('style');
               $('#offline_div').attr('style','display: none;');
+              $('#online_div').removeAttr('style');
             } else {
               $('#offline_div').removeAttr('style');
+              $('#online_div').removeAttr('style');
+              $('#online_div').attr('style','display: none;');
             }
         }
       }
@@ -77,14 +80,14 @@
             You are currently offline, please try again when your device is able to connect.
         </div>
         
-        <div id="main_content">
+        <div id="online_div">
             Let's do this
         </div>
         
         <hr />
         <div id="uuid">Default</div>
         &nbsp;&nbsp;
-        <div id="version">v17</div>
+        <div id="version">v18</div>
         &nbsp;&nbsp;
         <a onclick="alert(navigator.connection.type)">Network Status</a>
         <div id="debug_div"></div>
