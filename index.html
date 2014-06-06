@@ -33,35 +33,30 @@
         document.addEventListener("deviceready",onDeviceReady, false);
       }
       function onDeviceReady() {
-        //listen for network changes
-        //document.addEventListener("offline", onOffline, false);
-        //document.addEventListener("online", onOnline, false);
-
-        //navigator.notification.alert('Cordova is ready!');
-        //console.log(device.uuid);
         $('#uuid').html(device.uuid);
-        setInterval(function(){ajaxCheck()}, 30000);
+        setInterval(function(){ajaxCheck()}, 60000);
       }
       function ajaxCheck() {
+          var prev_status = $('#local_storage_div').attr('data-network-status');
           var jqxhr = $.get( "www.google.com", function() {
-              //$('#offline_div').removeAttr('style');
-              //$('#offline_div').attr('style','display: none;');
+            var new_status = 'online';
           })
           .fail(function() {
-            $('#offline_div').removeAttr('style');
-          })
+            var new_status = 'offline';
+          });
+          if (prev_status != new_status) {
+            $('#local_storage_div').attr('data-network-status',new_status);
+            toggleStatus(new_status);
+          }
       }
-      /*
-      function onOffline() {
-        // Handle the offline event
-        $('#offline_div').removeAttr('style');
+      function toggleStatus(new_status) {
+        if (new_status == 'online') {
+          $('#offline_div').removeAttr('style');
+          $('#offline_div').attr('style','display: none;');
+        } else {
+          $('#offline_div').removeAttr('style');
+        }
       }
-      function onOnline() {
-        // Handle the offline event
-        $('#offline_div').removeAttr('style');
-        $('#offline_div').attr('style','display: none;');
-      }
-      */
     </script>
   </head>
 
@@ -79,10 +74,12 @@
         <hr />
         <div id="uuid">Default</div>
         &nbsp;&nbsp;
-        <div id="version">v12</div>
+        <div id="version">v13</div>
         &nbsp;&nbsp;
         <a onclick="alert(navigator.connection.type)">Network Status</a>
     </div>
+    
+    <div id="local_storage_div" data-network-status="online" style="display: none"></div>
 
   </body>
 </html>
