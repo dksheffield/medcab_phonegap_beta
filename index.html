@@ -40,10 +40,13 @@
           alert('checking ajax');
           var html = $('#debug_div').html();
           html += 'Checking via ajax<br />';
+          alert(html);
           var prev_status = $('#local_storage_div').attr('data-network-status');
           html += 'Prev status: ' + prev_status + '<br />';
+          alert(html);
           var jqxhr = $.get( "www.google.com", function() {
             html += 'new_status is Online<br />';
+            alert(html);
             var new_status = 'online';
           })
           .fail(function() {
