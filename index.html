@@ -43,25 +43,38 @@
       }
       function onOffline() {
         // Handle the offline event
-        window.location.href = 'offline.html';
+        $('#offline_div').removeAttr('style');
       }
       function onOnline() {
         // Handle the offline event
-        navigator.notification.alert(':p Your back online now...');
+        $('#offline_div').removeAttr('style');
+        $('#offline_div').attr('style','display: none;');
       }
     </script>
   </head>
 
   <body onload="onBodyLoad()">
-
-    <div id="uuid">
-        Default
+  
+    <div class="container">
+        <div id="offline_div" style="display: none;">
+            You are currently offline, please try again when your device is able to connect.
+        </div>
+        
+        <div id="main_content">
+            Let's do this
+        </div>
+        
+        <hr />
+        <div id="uuid">Default</div>
+        &nbsp;&nbsp;
+        <div id="version">v10</div>
     </div>
+
+   
     
     <a href="offline.html">Offline</a>
     <a onclick="alert(navigator.connection.type)">Network Status</a>
     
-    v08
 
   </body>
 </html>
