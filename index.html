@@ -35,13 +35,18 @@
       function onDeviceReady() {
         navigator.notification.alert('Cordova is ready!');
         console.log(device.uuid);
+        $('#uuid').html(device.uuid);
       }
     </script>
   </head>
 
   <body onload="onBodyLoad()">
 
-    I hope hydration works now... v04
+    <div id="uuid">
+        Default
+    </div>
+    
+    v05
 
   </body>
 </html>
