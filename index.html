@@ -37,11 +37,14 @@
         setInterval(function(){ajaxCheck()}, 60000);
       }
       function ajaxCheck() {
+          alert('checking via ajax');
           var prev_status = $('#local_storage_div').attr('data-network-status');
           var jqxhr = $.get( "www.google.com", function() {
+            alert('online');
             var new_status = 'online';
           })
           .fail(function() {
+            alert('offline');
             var new_status = 'offline';
           });
           if (prev_status != new_status) {
@@ -74,7 +77,7 @@
         <hr />
         <div id="uuid">Default</div>
         &nbsp;&nbsp;
-        <div id="version">v13</div>
+        <div id="version">v14</div>
         &nbsp;&nbsp;
         <a onclick="alert(navigator.connection.type)">Network Status</a>
     </div>
