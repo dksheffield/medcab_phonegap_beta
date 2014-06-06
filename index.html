@@ -33,9 +33,21 @@
         document.addEventListener("deviceready",onDeviceReady, false);
       }
       function onDeviceReady() {
+        //listen for network changes
+        document.addEventListener("offline", onOffline, false);
+        document.addEventListener("online", onOnline, false);
+
         navigator.notification.alert('Cordova is ready!');
         console.log(device.uuid);
         $('#uuid').html(device.uuid);
+      }
+      function onOffline() {
+        // Handle the offline event
+        navigator.notification.alert('Looks, like you went offline, please try again when you come back   :(');
+      }
+      function onOnline() {
+        // Handle the offline event
+        navigator.notification.alert(':p Your back online now...');
       }
     </script>
   </head>
