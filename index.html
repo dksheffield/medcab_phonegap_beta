@@ -44,7 +44,7 @@
           var prev_status = $('#local_storage_div').attr('data-network-status');
           html += 'Prev status: ' + prev_status + '<br />';
           alert(html);
-          var jqxhr = $.get( "www.google.com", function() {
+          var jqxhr = $.get( "http://www.google.com", function() {
             html += 'new_status is Online<br />';
             alert(html);
             var new_status = 'online';
@@ -52,9 +52,11 @@
           .fail(function() {
             html += 'new status is offline<br />'
             var new_status = 'offline';
+            alert(html);
           });
           if (prev_status != new_status) {
             html += 'toggling status to ' + new_status + '<br />';
+            alert(html);
             $('#local_storage_div').attr('data-network-status',new_status);
             toggleStatus(new_status);
           }
