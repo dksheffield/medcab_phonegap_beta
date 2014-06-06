@@ -37,20 +37,25 @@
         setInterval(function(){ajaxCheck()}, 60000);
       }
       function ajaxCheck() {
-          alert('checking via ajax');
+          var html = $('#debug_div').html();
+          html += 'Checking via ajax<br />';
           var prev_status = $('#local_storage_div').attr('data-network-status');
+          html += 'Prev status: ' + prev_status + '<br />';
           var jqxhr = $.get( "www.google.com", function() {
-            alert('online');
+            html += 'new_status is Online<br />';
             var new_status = 'online';
           })
           .fail(function() {
-            alert('offline');
+            html += 'new status is offline<br />'
             var new_status = 'offline';
           });
           if (prev_status != new_status) {
+            html += 'toggling status to ' + new_status + '<br />';
             $('#local_storage_div').attr('data-network-status',new_status);
             toggleStatus(new_status);
           }
+          html += '<hr />';
+          $('#debug_div').html(html);
       }
       function toggleStatus(new_status) {
         if (new_status == 'online') {
@@ -77,9 +82,10 @@
         <hr />
         <div id="uuid">Default</div>
         &nbsp;&nbsp;
-        <div id="version">v14</div>
+        <div id="version">v15</div>
         &nbsp;&nbsp;
         <a onclick="alert(navigator.connection.type)">Network Status</a>
+        <div id="debug_div"></div>
     </div>
     
     <div id="local_storage_div" data-network-status="online" style="display: none"></div>
