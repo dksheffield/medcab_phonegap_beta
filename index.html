@@ -69,9 +69,16 @@
               $('#' + divs[x]).attr('style','display: none;');
           }
       }
+      function isSessionActive() {
+          console.log(window.localStorage.getItem("sessionEndDate"));
+      }
       function showDiv(divName) {
+          isSessionActive();
           hideAllDivs();
           $('#' + divName).removeAttr('style');          
+      }
+      function startApp() {
+          showDiv('loading_div');
       }
       function toggleStatus(prev_status,new_status) {
         if (prev_status != new_status) {
@@ -103,7 +110,7 @@
             <span class="icon-bar"></span>
           </button>
           <img src="images/icon.png" class="img-responsive pull-left" alt="ePharmacy">
-          <a class="navbar-brand" href="#">ePharmacy</a>
+          <a class="navbar-brand" onclick="startApp();">ePharmacy</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
