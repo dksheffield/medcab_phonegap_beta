@@ -59,6 +59,17 @@
       function clearStorage() {
           console.log('clearing storage');   
       }
+      function hideAllDivs() {
+          var divs = ['offline_div','janrain_login_div','loading_div'];
+          for (x=0;x<divs.length;x++) {
+              $('#' + divs[x]).removeAttr('style');
+              $('#' + divs[x]).attr('style','display: none;');
+          }
+      }
+      function showDiv(divName) {
+          $('#' + divName).removeAttr('style');
+          $('#' + divName).attr('style','display: block;');
+      }
       function toggleStatus(prev_status,new_status) {
         if (prev_status != new_status) {
             $('#local_storage_div').attr('data-network-status',new_status);
@@ -103,23 +114,54 @@
       </div>
     </div><!-- / close navbar -->
   
-    <div class="container">    
-        <div id="offline_div" style="display: none;">
-            You are currently offline, please try again when your device is able to connect.
-        </div>
+    <div class="container">
+        <div id="janrain_login_div">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Login</h3>
+              </div>
+              <div class="panel-body">
+                CLick here to login...
+              </div>
+            </div>
+        </div><!-- /janrain login div -->
         
-        <div id="online_div">
-            Let's do this
-        </div>
+        <div id="loading_div">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Please Wait</h3>
+              </div>
+              <div class="panel-body">
+                Application is loading...
+              </div>
+            </div>
+        </div><!-- /janrain login div -->
+    
+        <div id="offline_div" style="display: none;">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Your Currently Offline</h3>
+              </div>
+              <div class="panel-body">
+                You are currently offline, please try again when your device is able to connect.
+              </div>
+            </div>
+        </div><!-- /end offline_div -->
+        
+        
         
         <hr />
         <div id="uuid">Default</div>
         <br />
-        <div id="version">v19</div>
+        <div id="version">v20</div>
         <br />
         <a onclick="alert(navigator.connection.type)">Network Status</a>
         <br />
         <a onclick="clearStorage();">Clear Local Storage</a>
+        <br />
+        <a onclick="hideAllDivs();">Hide All Divs</a>
+        <br />
+        <a onclick="showDiv('loadingDiv');">Show Loading</a>
         <br />
         <div id="debug_div"></div>
     </div>
