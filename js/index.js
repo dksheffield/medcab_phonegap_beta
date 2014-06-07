@@ -13,13 +13,18 @@ function onDeviceReady() {
     $('#uuid').html(device.uuid);
     //setInterval(function(){ajaxOnlineCheck()}, 30000);
 }
+
+//regualr application functions
 function ajaxOnlineCheck() {
+    console.log('Checking if we are online...');
     var jqxhr = $.get( "http://www.google.com", function() {
         var isOnline = true;
-        return isOnline;
     })
     .fail(function() {
         isOnline = false;
+    })
+    .always(function() {
+        console.log('Are we online? ' + isOnline);
         return isOnline;
     });
 }
@@ -55,7 +60,7 @@ function showDiv(divName) {
     $('#' + divName).removeAttr('style');
     //call backs for divs
     if (divName !== 'offline_div') {
-        if (ajaxOnlineCheck() === false) {
+        if (!ajaxOnlineCheck()) {
             showDiv('offline_div');
         }
     }
