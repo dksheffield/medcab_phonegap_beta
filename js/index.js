@@ -24,6 +24,7 @@ function ajaxOnlineCheck() {
         var isOnline = false;
     })
     .always(function() {
+        alert(isOnline);
         console.log('Are we online? ' + isOnline);
         return isOnline;
     });
