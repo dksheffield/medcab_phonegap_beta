@@ -70,9 +70,11 @@
           }
       }
       function isSessionActive() {
-          console.log(window.localStorage.getItem("sessionEndDate"));
+          //console.log(window.localStorage.getItem("sessionEndDate"));
       }
       function showDiv(divName) {
+          console.log(window.sessionStorage);
+          console.log(window.localStorage);
           isSessionActive();
           hideAllDivs();
           $('#' + divName).removeAttr('style');          
