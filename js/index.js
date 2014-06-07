@@ -14,24 +14,14 @@ function onDeviceReady() {
     //setInterval(function(){ajaxOnlineCheck()}, 30000);
 }
 function ajaxOnlineCheck() {
-    var html = $('#debug_div').html();
-    html += '<hr />';
-    html += 'Checking via ajax<br />';
-    var prev_status = $('#local_storage_div').attr('data-network-status');
-    html += 'Prev status: ' + prev_status + '<br />';
     var jqxhr = $.get( "http://www.google.com", function() {
-        html += 'new_status is online<br />';
-        var new_status = 'online';
-        toggleStatus(prev_status,new_status);
-        $('#debug_div').html(html);
+        var isOnline = true;
+        return isOnline;
     })
     .fail(function() {
-        html += 'new status is offline<br />';
-        var new_status = 'offline';
-        toggleStatus(prev_status,new_status);
-        $('#debug_div').html(html);
+        isOnline = false;
+        return isOnline;
     });
-  
 }
 function clearStorage() {
     console.log('clearing storage');   
@@ -62,7 +52,13 @@ function showCorrectLoginDiv() {
 }
 function showDiv(divName) {
     hideAllDivs();
-    $('#' + divName).removeAttr('style');          
+    $('#' + divName).removeAttr('style');
+    //call backs for divs
+    if (divName !== 'offline_div') {
+        if (ajaxOnlineCheck() === false) {
+            showDiv('offline_div');
+        }
+    }
 }
 function toggleStatus(prev_status,new_status) {
     if (prev_status !== new_status) {
