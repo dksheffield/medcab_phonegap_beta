@@ -8,7 +8,7 @@ function onDeviceReady() {
         console.log('User is logged in');
         showDiv('loading_div');
     } else {
-        showDiv('janrain_login_div');   
+        showCorrectLoginDiv();   
     }
     $('#uuid').html(device.uuid);
     //setInterval(function(){ajaxOnlineCheck()}, 30000);
@@ -37,7 +37,8 @@ function clearStorage() {
     console.log('clearing storage');   
 }
 function hideAllDivs() {
-    var divs = ['offline_div','janrain_login_div','loading_div'];
+    var divs = ['offline_div','janrain_login_div','loading_div',
+        'pincode_login_div'];
     for (x=0;x<divs.length;x++) {
         $('#' + divs[x]).removeAttr('style');
         $('#' + divs[x]).attr('style','display: none;');
@@ -51,6 +52,13 @@ function isSessionActive() {
         console.log('There is a session named sessionExpireDate');   
     }
     return sessionActive;
+}
+function showCorrectLoginDiv() {
+    if (window.localStorage.getItem("userPinCode") === null) {
+        showDiv('janrain_login_div');
+    } else {
+        showDiv('pincode_login_div');   
+    }
 }
 function showDiv(divName) {
     hideAllDivs();
