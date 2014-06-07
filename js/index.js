@@ -19,15 +19,15 @@ function ajaxOnlineCheck() {
     console.log('Checking if we are online...');
     var jqxhr = $.get( "http://www.google.com", function() {
         var isOnline = true;
-        alert(isOnline);
+        console.log('isOnline from success: ' + isOnline);
     })
     .fail(function() {
         var isOnline = false;
-        alert(isOnline);
+        console.log('isOnline from fail: ' + isOnline);
     })
     .always(function() {
-        alert(isOnline);
         console.log('Are we online? ' + isOnline);
+        console.log('isOnline from always: ' + isOnline);
         return isOnline;
     });
 }
