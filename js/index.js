@@ -21,7 +21,7 @@ function ajaxOnlineCheck() {
         var isOnline = true;
     })
     .fail(function() {
-        isOnline = false;
+        var isOnline = false;
     })
     .always(function() {
         console.log('Are we online? ' + isOnline);
