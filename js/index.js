@@ -18,17 +18,11 @@ function onDeviceReady() {
 function ajaxOnlineCheck() {
     console.log('Checking if we are online...');
     var jqxhr = $.get( "http://www.google.com", function() {
-        var isOnline = true;
-        console.log('isOnline from success: ' + isOnline);
+        console.log('We are online :)');
     })
     .fail(function() {
-        var isOnline = false;
-        console.log('isOnline from fail: ' + isOnline);
-    })
-    .always(function() {
-        console.log('Are we online? ' + isOnline);
-        console.log('isOnline from always: ' + isOnline);
-        return isOnline;
+        console.log('We are not online');
+        showDiv('offline_div');
     });
 }
 function clearStorage() {
@@ -63,15 +57,7 @@ function showDiv(divName) {
     $('#' + divName).removeAttr('style');
     //call backs for divs
     if (divName !== 'offline_div') {
-        console.log('checking to see if we are online');
-        var isOnline = ajaxOnlineCheck();
-        console.log('isOnline: ' + isOnline);
-        if (isOnline) {
-            console.log('we are online')
-        } else {
-            console.log('we are not online');
-            showDiv('offline_div');
-        }
+        ajaxOnlineCheck();        
     }
 }
 function toggleStatus(prev_status,new_status) {
