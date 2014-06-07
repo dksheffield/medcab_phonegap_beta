@@ -3,6 +3,7 @@ function onBodyLoad() {
     document.addEventListener("deviceready",onDeviceReady, false);
 }
 function onDeviceReady() {
+    alert(isSessionActive());
     if (isSessionActive()) {
         console.log('User is logged in');
         showDiv('loading_div');
