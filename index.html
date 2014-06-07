@@ -56,6 +56,9 @@
           });
           
       }
+      function clearStorage() {
+          console.log('clearing storage');   
+      }
       function toggleStatus(prev_status,new_status) {
         if (prev_status != new_status) {
             $('#local_storage_div').attr('data-network-status',new_status);
@@ -86,10 +89,13 @@
         
         <hr />
         <div id="uuid">Default</div>
-        &nbsp;&nbsp;
-        <div id="version">v18</div>
-        &nbsp;&nbsp;
+        <br />
+        <div id="version">v19</div>
+        <br />
         <a onclick="alert(navigator.connection.type)">Network Status</a>
+        <br />
+        <a onclick="clearStorage();">Clear Local Storage</a>
+        <br />
         <div id="debug_div"></div>
     </div>
     
