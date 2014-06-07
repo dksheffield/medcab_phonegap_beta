@@ -3,7 +3,12 @@ function onBodyLoad() {
     document.addEventListener("deviceready",onDeviceReady, false);
 }
 function onDeviceReady() {
-    isSessionActive();
+    if (isSessionActive()) {
+        console.log('User is logged in');
+        showDiv('loading_div');
+    } else {
+        showDiv('janrain_login_div');   
+    }
     showDiv('loading_div');
     $('#uuid').html(device.uuid);
     //setInterval(function(){ajaxOnlineCheck()}, 30000);
@@ -39,9 +44,13 @@ function hideAllDivs() {
     }
 }
 function isSessionActive() {
+    var sessionActive = false;
     if (window.sessionStorage.getItem("sessionExpireDate") === null) {
         console.log('no session object named sessionExpireDate');
+    } else {
+        console.log('There is a session named sessionExpireDate');   
     }
+    return sessionActive;
 }
 function showDiv(divName) {
     console.log(window.sessionStorage);
