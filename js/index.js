@@ -65,6 +65,7 @@ function showDiv(divName) {
     if (divName !== 'offline_div') {
         console.log('checking to see if we are online');
         var isOnline = ajaxOnlineCheck();
+        console.log('isOnline: ' + isOnline);
         if (isOnline) {
             console.log('we are online')
         } else {
