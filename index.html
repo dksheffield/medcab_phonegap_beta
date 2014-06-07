@@ -70,8 +70,8 @@
           }
       }
       function showDiv(divName) {
-          $('#' + divName).removeAttr('style');
-          $('#' + divName).attr('style','display: block;');
+          hideAllDivs();
+          $('#' + divName).removeAttr('style');          
       }
       function toggleStatus(prev_status,new_status) {
         if (prev_status != new_status) {
@@ -118,45 +118,25 @@
     </div><!-- / close navbar -->
   
     <div class="container">
-        <div id="janrain_login_div">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">Login</h3>
-              </div>
-              <div class="panel-body">
-                CLick here to login...
-              </div>
-            </div>
+        <div id="janrain_login_div" style="display: none;">
+            <h3>Login</h3>
+            Click Here to login
         </div><!-- /janrain login div -->
         
         <div id="loading_div">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">Please Wait</h3>
-              </div>
-              <div class="panel-body">
-                Application is loading...
-              </div>
-            </div>
+            <h3>Loading...</h3>
+            Please wait your application is loading
         </div><!-- /janrain login div -->
     
         <div id="offline_div" style="display: none;">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">Your Currently Offline</h3>
-              </div>
-              <div class="panel-body">
-                You are currently offline, please try again when your device is able to connect.
-              </div>
-            </div>
+            <h3>Your Offline</h3>
+            Please try again when your connection has been restored
         </div><!-- /end offline_div -->
-        
-        
         
         <hr />
         <div id="uuid">Default</div>
         <br />
-        <div id="version">v20</div>
+        <div id="version">v21</div>
         <br />
         <a onclick="alert(navigator.connection.type)">Network Status</a>
         <br />
@@ -164,7 +144,11 @@
         <br />
         <a onclick="hideAllDivs();">Hide All Divs</a>
         <br />
-        <a onclick="showDiv('loadingDiv');">Show Loading</a>
+        <a onclick="showDiv('loading_div');">Show Loading</a>
+        <br />
+        <a onclick="showDiv('offline_div');">Show Offline</a>
+        <br />
+        <a onclick="showDiv('janrain_login_div');">Show Janrain</a>
         <br />
         <div id="debug_div"></div>
     </div>
