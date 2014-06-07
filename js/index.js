@@ -19,9 +19,11 @@ function ajaxOnlineCheck() {
     console.log('Checking if we are online...');
     var jqxhr = $.get( "http://www.google.com", function() {
         var isOnline = true;
+        alert(isOnline);
     })
     .fail(function() {
         var isOnline = false;
+        alert(isOnline);
     })
     .always(function() {
         alert(isOnline);
