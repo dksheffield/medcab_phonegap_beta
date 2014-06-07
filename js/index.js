@@ -3,14 +3,13 @@ function onBodyLoad() {
     document.addEventListener("deviceready",onDeviceReady, false);
 }
 function onDeviceReady() {
-    alert(isSessionActive());
+    showDiv('loading_div');
     if (isSessionActive()) {
         console.log('User is logged in');
         showDiv('loading_div');
     } else {
         showDiv('janrain_login_div');   
     }
-    showDiv('loading_div');
     $('#uuid').html(device.uuid);
     //setInterval(function(){ajaxOnlineCheck()}, 30000);
 }
@@ -54,9 +53,6 @@ function isSessionActive() {
     return sessionActive;
 }
 function showDiv(divName) {
-    console.log(window.sessionStorage);
-    console.log(window.localStorage);
-    isSessionActive();
     hideAllDivs();
     $('#' + divName).removeAttr('style');          
 }
