@@ -63,7 +63,9 @@ function showDiv(divName) {
     $('#' + divName).removeAttr('style');
     //call backs for divs
     if (divName !== 'offline_div') {
+        console.log('checking to see if we are online');
         if (!ajaxOnlineCheck()) {
+            console.log('we are not online');
             showDiv('offline_div');
         }
     }
