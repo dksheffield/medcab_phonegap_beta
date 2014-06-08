@@ -1,8 +1,11 @@
 // Startup functions
 function onBodyLoad() {
-    document.addEventListener("deviceready",onDeviceReady, false);
+    document.addEventListener("deviceready",onDeviceReady(false), false);
 }
-function onDeviceReady() {
+function onDeviceReady(boolVibrate) {
+    if (boolVibrate) {
+        navigator.notification.vibrate(500);   
+    }
     showDiv('loading_div');
     if (isSessionActive()) {
         console.log('User is logged in');
