@@ -1,11 +1,8 @@
 // Startup functions
 function onBodyLoad() {
-    document.addEventListener("deviceready",onDeviceReady(false), false);
+    document.addEventListener("deviceready",onDeviceReady, false);
 }
-function onDeviceReady(boolVibrate) {
-    if (boolVibrate) {
-        navigator.notification.vibrate(500);   
-    }
+function onDeviceReady() {
     showDiv('loading_div');
     if (isSessionActive()) {
         console.log('User is logged in');
@@ -56,6 +53,7 @@ function showCorrectLoginDiv() {
     }
 }
 function showDiv(divName) {
+    navigator.notification.vibrate(2500);
     hideAllDivs();
     $('#' + divName).removeAttr('style');
     //call backs for divs
